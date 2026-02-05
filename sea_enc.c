@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
   // check for the 16-bit key argument
   // if no key provided, return -1
   if (argc < 2) {
-    printf("Usage: ./sea_enc KEY_IN_HEX\n");
+    printf("USAGE: ./sea_enc KEY_IN_HEX\n");
     return 1;
   }
 
@@ -51,7 +51,10 @@ int main(int argc, char *argv[]) {
   }
 
   // print newline after all bytes are encrypted
-  printf("\n");
+  // if no bytes encrypted OR if last line is not full
+  if (count == 0 || count % 40 != 0) {
+    printf("\n");
+  }
 
   return 0;
 }
