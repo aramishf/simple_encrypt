@@ -36,10 +36,15 @@ int main(int argc, char *argv[]) {
     printf("%02X", encrypted);
     count++;
 
+    // newlien every 40 bytes
+    if (count % 40 == 0) {
+      printf("\n");
+    }
+
     // rol 1 bit
     // for 16 bit: bit 15 moves to bit 0
     // bit 14 moves to bit 13, etc
-    N = (N << 1) | (N >> 15) & 0xFFFF;
+    N = ((N << 1) | (N >> 15)) & 0xFFFF;
 
     // multiply by 257 and keep lower 16 bits
     N = (N * 257) & 0xFFFF;
